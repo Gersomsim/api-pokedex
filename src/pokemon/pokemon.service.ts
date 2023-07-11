@@ -22,7 +22,7 @@ export class PokemonService {
   }
 
   findAll() {
-    return `This action returns all pokemon`;
+    return this.pokemonModel.find();
   }
 
   async findOne(term: string) {
@@ -57,9 +57,9 @@ export class PokemonService {
   }
 
   async remove(id: string) {
-    const pokemon = await this.findOne(id);
-    // this.pokemonModel.findByIdAndDelete()
-    await pokemon.deleteOne();
+    // const pokemon = await this.findOne(id);
+    this.pokemonModel.findByIdAndDelete(id);
+    // await pokemon.deleteOne();
   }
   private handleException(e: any) {
     if (e instanceof NotFoundException) {
